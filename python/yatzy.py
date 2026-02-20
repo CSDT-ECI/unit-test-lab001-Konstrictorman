@@ -12,10 +12,12 @@ class Yatzy:
 
     @staticmethod
     def yatzy(dice):
-        counts = [0]*(len(dice)+1)
+        if isinstance(dice, Yatzy):
+            dice = dice.dice
+        counts = [0]*6
         for die in dice:
             counts[die-1] += 1
-        for i in range(len(counts)):
+        for i in range(6):
             if counts[i] == 5:
                 return 50
         return 0
